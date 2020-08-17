@@ -14,6 +14,12 @@ def merge(pdfs):
 
 if str(sys.argv[1]) == "all":
     pdfs = glob.iglob("*.pdf")
+else:
+    pdfs = sys.argv[1:]
+    for pdf in pdfs:
+        if not pdf.endswith(".pdf"):
+            pdfs.remove(pdf)
+
 try:
     merge(pdfs)
 except:
