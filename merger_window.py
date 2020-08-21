@@ -1,10 +1,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class Ui_MergerWindow(object):
+
     def setupUi(self, MergerWindow):
         MergerWindow.setObjectName("MergerWindow")
-        MergerWindow.resize(420, 245)
+        MergerWindow.resize(420, 300)
         self.centralwidget = QtWidgets.QWidget(MergerWindow)
         self.centralwidget.setObjectName("centralwidget")
 
@@ -37,6 +37,23 @@ class Ui_MergerWindow(object):
         self.merge_button.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.merge_button.setObjectName("merge_button")
 
+        self.output_path_lineedit = QtWidgets.QLineEdit(self.centralwidget)
+        self.output_path_lineedit.setGeometry(QtCore.QRect(10, 270, 400, 25))
+        self.output_path_lineedit.setReadOnly(True)
+        self.output_path_lineedit.setObjectName("output_path_lineedit")
+        self.output_path_lineedit.setAlignment(QtCore.Qt.AlignCenter)
+
+        self.current_path_label = QtWidgets.QLabel(self.centralwidget)
+        self.current_path_label.setGeometry(QtCore.QRect(130, 250, 160, 15))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setUnderline(True)
+        font.setWeight(75)
+        self.current_path_label.setFont(font)
+        self.current_path_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.current_path_label.setObjectName("current_path_label")
+
         MergerWindow.setCentralWidget(self.centralwidget)
         self.retranslateUi(MergerWindow)
         QtCore.QMetaObject.connectSlotsByName(MergerWindow)
@@ -49,6 +66,7 @@ class Ui_MergerWindow(object):
         self.add_folder_button.setText(_translate("MergerWindow", "Add all from folder"))
         self.output_button.setText(_translate("MergerWindow", "Select output folder"))
         self.merge_button.setText(_translate("MergerWindow", "Merge pdfs"))
+        self.current_path_label.setText(_translate("MergerWindow", "Current output path:"))
 
 
 if __name__ == "__main__":

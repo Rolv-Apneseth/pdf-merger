@@ -78,13 +78,23 @@ class Merger(merger_window.Ui_MergerWindow):
                     self.pdf_list_widget.addItem(os.path.join(folder, file))
                     self.pdfs.append(file)
 
+
+    def on_changed_path(self):
+        """Changes path displayed on the lineedit at the bottom of the gui to show the updated output path."""
+
+        self.output_path_lineedit.setText(os.path.join(self.output_folder, "Merged.pdf"))
+
+
     def on_clicked_output_button(self):
-        """Sets the self.output_folder to a chosen directory path."""
+        """Sets the self.output_folder to a chosen directory path. Also calls self.on_changed_path."""
 
         folder = self.choose_folder_path()
 
         if os.path.isdir(folder):
             self.output_folder = folder
+
+        self.on_changed_path()
+
 
     def on_clicked_merge_button(self):
         """Calls self.merge_pdfs function with self.pdfs and self.output_folder, then closes the main window."""
@@ -98,6 +108,7 @@ class Merger(merger_window.Ui_MergerWindow):
         self.output_button.clicked.connect(self.on_clicked_output_button)
         self.remove_button.clicked.connect(self.on_clicked_remove_button)
         self.add_folder_button.clicked.connect(self.on_clicked_add_folder_button)
+        self.on_changed_path()
 
 
 if __name__ == "__main__":
