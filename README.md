@@ -1,4 +1,4 @@
-# rolvs-pdf-merger
+# pdf-merger
  Simple program to merge pdf files together, with a gui made in pyqt5.
 
 Run the main.py file for a gui, which allows you to add (even add all .pdf files from a chosen directory) and remove pdf files from the list displayed,
